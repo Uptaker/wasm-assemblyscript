@@ -59,6 +59,8 @@ export function random(min: i32, max: i32): i32 {
 
 # Paigaldamine
 
+WebAssembly paigaldamine on võrdlemisi otsekohane ning veebiarendaja, kes on juba tuttav järgnevate Node tööriistadega, saab tunda end kohe kodus.
+
 ## Node
 
 Paigaldamiseks on vajalik installeerida **Node**, mis tuleb kaasa koos enda **npm** pakettihaldajaga (Node Package Manager).
