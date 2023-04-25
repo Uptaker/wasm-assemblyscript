@@ -58,3 +58,54 @@ export function random(min: i32, max: i32): i32 {
 ```
 
 # Paigaldamine
+
+## Node
+
+Paigaldamiseks on vajalik installeerida **Node**, mis tuleb kaasa koos enda **npm** pakettihaldajaga (Node Package Manager).
+
+Node saab alla tõmmata kõikidele platformidele [Node ametlikult veebilehelt](https://nodejs.org/en/download).
+
+Olemasolu kontrollimiseks ava käsurida ning sisesta järgmised käsud:
+
+```bash
+node -v
+```
+
+```bash
+npm -v
+```
+
+## Uue projekti koostamine
+
+Tekitame uue projekti. Selleks tee lahti tühi kaust ja sisestame käsureal järgmised käsud.
+
+1. Koostame uue node.js mooduli:
+```bash
+npm init
+```
+
+2. Paigaldame AssemblyScript projekti sõltuvusena:
+```bash
+npm install --save-dev assemblyscript
+```
+
+3. Koostame uue AssemblyScript projekti:
+```bash
+npx asinit .
+```
+
+Käsk `asinit` automaatselt loob eelnevalt seadistud projekti koos oma kaustade ja failidega, mida saab kasutada algpunktina.
+
+
+
+# Arendus
+
+## AssemblyScript funktsioonid JavaScriptis
+
+## JavaScript funktsioonid AssemblyScriptis
+
+## Keerulised tüübid
+
+
+
+
