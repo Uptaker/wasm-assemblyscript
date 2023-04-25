@@ -96,6 +96,33 @@ npx asinit .
 
 Käsk `asinit` automaatselt loob eelnevalt seadistud projekti koos oma kaustade ja failidega, mida saab kasutada algpunktina.
 
+4. Veendume, et saame kompileerida kasutades testi:
+
+- Installime uuesti sõltuvused
+```bash
+npm i
+```
+
+- Teeme WebAssembly faili imporditavaks
+```bash
+npm run asbuild
+```
+
+- Testime
+```bash
+npm test
+```
+
+Kui väljund sarnaneb järgnevaga, siis kõik toimib.
+
+```
+> hello_world@1.0.0 test
+> node tests
+
+ok
+```
+
+Kui ei toimi, siis venduge, et `node -v` versioon on v14.20 või enam.
 
 
 # Arendus
