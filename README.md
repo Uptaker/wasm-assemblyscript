@@ -1,0 +1,2 @@
+# wasm-assemblyscript
+AssemblyScript
