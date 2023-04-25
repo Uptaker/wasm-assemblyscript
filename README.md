@@ -45,7 +45,7 @@ export function random(min: i32, max: i32): i32 {
 }
 ```
 
-AssemblyScript süntaks on veidi erinev, kuna esiteks siinkohal kasutatakse WebAssembly tüüpe (i32 ehk 32-bitine number). Juhusliku arvu ümardamiseks täisarvuks selle asemel, et kasutada `Math.floor()` funktsiooni, valitakse lõpus konkreetset tüüpi.
+AssemblyScript süntaks on veidi erinev, kuna esiteks siinkohal kasutatakse WebAssembly tüüpe (i32 ehk 32-bitine number).
 
 Siinkohal peab märkima, et AssemblyScriptiga on võimalik teha pisioptimisatsioone. Näiteks selle asemel, et kasutada `Math.floor()` arvu ümardamiseks, saab ka lihtsalt teisendada tüübi (ehk *type casting*). Ujukomaarvu andmetüüpi täisarvuks teisendamine on lihtne ja kiire toiming, samas kui funktsiooni `Math.floor()` kutsumine nõuab rohkem üldkulusid ja on seetõttu aeglasem.
 
