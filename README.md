@@ -1,23 +1,23 @@
 # AssemblyScript
 
-# Mis on AssemblyScript?
+## Mis on AssemblyScript?
 
 AssemblyScript on programmeerimiskeel, mis sündis WebAssembly tulekuga. Ta põhineb TypeScripti keele peal. TypeScript omakorda põhineb JavaScripti peal ning lisab keelele tüüpe. AssemblyScript on loodud selleks, et TypeScripti süntaksiga koodi oleks võimalik kompileerida WebAssembly koodiks - see võimaldab importida juba eelnevalt kompileeritud ja optimeeritud koodi otse olemasoleva JavaScript koodi.
 
 AssemblyScript on ainulaadne selle poolest, et see võimaldab JavaScripti ja TypeScripti tundvatel veebiarendajatel kirjutada koodi, mis suudab WebAssemblyt sihtida ilma uut keelt õppimata.
 
-# Miks just AssemblyScript?
+## Miks just AssemblyScript?
 
 AssemblyScript on suunatud veebiarendajatele, kes soovivad oma projektides kasutada WebAssembly'i võimsust ja potentsiaali, ilma TypeScripti/JavaScripti mugavust ja omakorda tootlikust ohverdamata. Seega esimene eelis võrreldes teistega on veebiarendajatele tuttav süntaks.
 
 Üks teine eelis võrreldes teiste WebAssembly'ile kompileerimisvõimeliste tööriistakettidega, näiteks Rustil põhinevate tööriistakettide ja Emscripteniga, on selle lihtsus ja kasutusmugavus. AssemblyScript ei nõua raskeid tööriistahelaid ega keerulisi seadistamisprotsesse. Seda saab paigaldata npm-i abil ja integreerida olemasolevatesse töövoogudesse. AssemblyScriptil on ka kõrgetasemeline süntaks, mis sarnaneb JavaScriptile ja TypeScriptile - see teeb selle veebiarendajatele kättesaadavamaks ja intuitiivsemaks, kui keeled nagu C või Rust.
 
-# Koodivõrdlus TypeScripti ja JavaScriptiga
+## Koodivõrdlus TypeScripti ja JavaScriptiga
 
 AssemblyScript kasutab WebAssembly sissehitatud tüüpe ning on rangem kui TypeScript (näiteks, ei ole võimalik tekitada funktsiooni, mis tagastab `any`). Näidiseks on lihtne funktsioon, mis genereerib juhusliku arvu antud piirkonna vahel.
 
 
-## JavaScript
+### JavaScript
 
 ```js
 function random(min, max) {
@@ -27,7 +27,7 @@ function random(min, max) {
 }
 ```
 
-## TypeScript
+### TypeScript
 ```ts
 export function random(min: number, max: number) {
   const ranges = max - min + 1;
@@ -36,7 +36,7 @@ export function random(min: number, max: number) {
 }
 ```
 
-## AssemblyScript
+### AssemblyScript
 ```ts
 export function random(min: i32, max: i32): i32 {
   const ranges = max - min + 1;
