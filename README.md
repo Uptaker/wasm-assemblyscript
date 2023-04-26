@@ -259,7 +259,7 @@ AssemblyScript kompilaatori saab vajadusel ka optimeerida. Optimeerimise tõhusu
 Selle kasutamiseks lihtsalt lisage sama parameeter `package.json` faili, kus kompileeritakse programmi lõppversioon ehk **release** versioon:
 
 ```json
-    "asbuild:release": "asc assembly/index.ts --runtime minimal --target release",
+"asbuild:release": "asc assembly/index.ts --runtime minimal --target release",
 ```
 
 Optimeerimised on rakendatud pärast järgmist kompileerimist. Sama optimisatsioon on rakendatud **algorithms** kaustas.
