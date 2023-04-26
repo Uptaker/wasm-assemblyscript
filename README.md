@@ -252,6 +252,10 @@ assert.strictEqual(sumBigInt([1, 5, 0, 10].map(v => BigInt(v))), BigInt(16));
 
 Muud näited asuvad **arrays** kataloogis.
 
+## Optimeerimine
+
+AssemblyScript kompilaatori saab vajadusel ka optimeerida. Optimeerimise tõhusus ja võimalus sõltub programmist ja algoritmist. Kompileerimise käsule saab anda parameetrid, mis vahetavad välja käivituskeskkonna. Näiteks `--runtime minimal` parameeter parandab `sieveOfEratosthenes()` funktsiooni kiirust kuni 2 korda ning `bubblesort()` funktsiooni kuni kolm korda (~90 sekundilt ~30-le)
+
 ## Millal kasutada?
 
 Kuigi WebAssembly on teoorias kiirem, siis nende moodulite väljakutsimine on kulukam, kui tavapärase JavaScripti funktsiooni väljakutsumine. Seega enamus ajast JavaScriptis/TypeScriptis kirjutamine on täiesti piisav. Eranditeks on näiteks arvukad kalkulatsioonid ja keerulised algoritmid.

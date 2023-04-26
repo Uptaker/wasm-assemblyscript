@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module">
+import { bubblesort, sieveOfEratosthenes } from "./build/release.js";
+import {unsorted} from './arr.js'
+function jsBubbleSort(origArr) {
+            let arr = origArr
+            for(let i = 0; i < arr.length; i++){
+                for(let j = 0; j < ( arr.length - i -1 ); j++) {
+                    if(arr[j] > arr[j+1]){
+                        let temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j+1] = temp
+                    }
+                }
+            }
+            return arr;
+        }
+
+function sieveOfEratosthenesJs(n) {
+    let primes = [];
+
+    // Create a boolean array indicating whether each number is prime or not
+    let isPrime = new Array(n + 1).fill(true);
+
+    // Mark multiples of each prime as non-prime
+    for (let p = 2; p * p <= n; p++) {
+        if (isPrime[p]) {
+        for (let i = p * p; i <= n; i += p) {
+            isPrime[i] = false;
+        }
+        }
+    }
+
+    // Add all primes to the result array
+    for (let p = 2; p <= n; p++) {
+        if (isPrime[p]) {
+        primes.push(p);
+        }
+    }
+
+    return primes;
+}
+
+function start() {
+        console.log("Bubblesort in JavaScript...")
+        let startTime = performance.now()
+        jsBubbleSort(unsorted)
+        let time = performance.now() - startTime
+        console.log(`JavaScript ended in ${performance.now() - startTime} ms`)
+        js.innerText += `\n\nBubbleSort ${time}`
+
+        console.log("Bubblesort in AssemblyScript...")
+        startTime = performance.now()
+        bubblesort(unsorted)
+        time = performance.now() - startTime
+        console.log(`AssemblyScript ended in ${time} ms`)
+        as.innerText += `\n\nBubbleSort ${time}`
+}
+
+function startSoE(n) {
+    console.log("SoE in JavaScript...")
+    let startTime = performance.now()
+    sieveOfEratosthenesJs(n)
+    let time = performance.now() - startTime
+    console.log(`JavaScript ended in ${performance.now() - startTime} ms`)
+    js.innerText += `\n\nSoE ${n} -> ${time}`
+
+    console.log("SoE in AssemblyScript...")
+    startTime = performance.now()
+    sieveOfEratosthenes(n)
+    time = performance.now() - startTime
+    console.log(`AssemblyScript ended in ${time} ms`)
+    as.innerText += `\n\nSoE ${n} -> ${time}`
+}
+
+startSoE(10)
+startSoE(100)
+startSoE(10000)
+startSoE(1000000)
+startSoE(100000000)
+
+start()
+
+</script>
+</head>
+<body>
+    <div>JavaScript: <span id="js"></span></div>
+    <div>AssemblyScript: <span id="as"></span></div>
+</body>
+</html>
