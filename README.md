@@ -256,6 +256,14 @@ Muud näited asuvad **arrays** kataloogis.
 
 AssemblyScript kompilaatori saab vajadusel ka optimeerida. Optimeerimise tõhusus ja võimalus sõltub programmist ja algoritmist. Kompileerimise käsule saab anda parameetrid, mis vahetavad välja käivituskeskkonna. Näiteks `--runtime minimal` parameeter parandab `sieveOfEratosthenes()` funktsiooni kiirust kuni 2 korda ning `bubblesort()` funktsiooni kuni kolm korda (~90 sekundilt ~30-le)
 
+Selle kasutamiseks lihtsalt lisage sama parameeter `package.json` faili, kus kompileeritakse programmi lõppversioon ehk **release** versioon:
+
+```json
+    "asbuild:release": "asc assembly/index.ts --runtime minimal --target release",
+```
+
+Optimeerimised on rakendatud pärast järgmist kompileerimist. Sama optimisatsioon on rakendatud **algorithms** kaustas.
+
 ## Millal kasutada?
 
 Kuigi WebAssembly on teoorias kiirem, siis nende moodulite väljakutsimine on kulukam, kui tavapärase JavaScripti funktsiooni väljakutsumine. Seega enamus ajast JavaScriptis/TypeScriptis kirjutamine on täiesti piisav. Eranditeks on näiteks arvukad kalkulatsioonid ja keerulised algoritmid.
