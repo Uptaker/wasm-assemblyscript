@@ -252,6 +252,12 @@ assert.strictEqual(sumBigInt([1, 5, 0, 10].map(v => BigInt(v))), BigInt(16));
 
 Muud näited asuvad **arrays** kataloogis.
 
+## Millal kasutada?
+
+Kuigi WebAssembly on teoorias kiirem, siis nende moodulite väljakutsimine on kulukam, kui tavapärase JavaScripti funktsiooni väljakutsumine. Seega enamus ajast JavaScriptis/TypeScriptis kirjutamine on täiesti piisav. Eranditeks on näiteks arvukad kalkulatsioonid ja keerulised algoritmid.
+
+Enamjaolt on ülaltoodud massiivide funktsioonid tihtipeale kiiremad JavaScriptis, kuid neid saab kombineerida teiste keerukamate algoritmidega. Näiteks populaarne JavaScript moodulite pakkija, WebPack, võttis kasutusele AssemblyScripti, et [kiirendada räsi arvutamist](https://github.com/webpack/webpack/blob/main/assembly/hash/md4.asm.ts).
+
 ## Pea meeles
 
 - Et näha oma koodi muudatusi, peab välja kutsuma `npm run asbuild` skripti
@@ -259,7 +265,6 @@ Muud näited asuvad **arrays** kataloogis.
 - AssemblyScripti saab kasutada olemasolevate TypeScript tööriistadega, näiteks linterid (ehk koodi korrastajad) või IntelliSense pluginad.
 - AssemblyScript failid on `.ts`, mis võib olla veidi segane. Selle eelis on see, et vajadusel saab koodi kompileerida otse JavaScripti kasutades TypeScripti `tsc` kompilaatori. Sellest lähemalt saab lugeda [siit](https://www.assemblyscript.org/compiler.html#portability).
 - Hea tava on alati testida oma koodi. See võib olla tehtud ka väliste tööriistadega nagu mocha, jest või vitest.
-- Kuigi WebAssembly on teoorias kiirem, siis nende moodulite väljakutsimine on kulukam, kui tavapärase JavaScripti funktsiooni väljakutsumine. Seega namus ajast JavaScriptist on täiesti piisav. Eranditeks on näiteks arvukad kalkulatsioonid ja keerulised algoritmid.
 
 # Allikad
 - https://www.assemblyscript.org/
