@@ -256,7 +256,7 @@ Muud näited asuvad **arrays** kataloogis.
 
 Kuigi WebAssembly on teoorias kiirem, siis nende moodulite väljakutsimine on kulukam, kui tavapärase JavaScripti funktsiooni väljakutsumine. Seega enamus ajast JavaScriptis/TypeScriptis kirjutamine on täiesti piisav. Eranditeks on näiteks arvukad kalkulatsioonid ja keerulised algoritmid.
 
-Enamjaolt on ülaltoodud massiivide funktsioonid tihtipeale kiiremad JavaScriptis, kuid neid saab kombineerida teiste keerukamate algoritmidega. Näiteks populaarne JavaScript moodulite pakkija, WebPack, võttis kasutusele AssemblyScripti, et [kiirendada räsi arvutamist](https://github.com/webpack/webpack/blob/main/assembly/hash/md4.asm.ts).
+Enamjaolt on ülaltoodud massiivide funktsioonid tihtipeale kiiremad JavaScriptis, kuid neid saab kombineerida teiste keerukamate algoritmidega. Näiteks populaarne JavaScript moodulite pakkija, WebPack, võttis kasutusele AssemblyScripti, et [kiirendada räside arvutamist](https://github.com/webpack/webpack/blob/main/assembly/hash/md4.asm.ts).
 
 ## Pea meeles
 
