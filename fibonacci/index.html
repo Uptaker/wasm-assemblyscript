@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module">
+import { fibonacci } from "./build/release.js";
+function fibonacciJs(n) {
+    if (n === 0) return 0
+    else if (n === 1) return 1
+    let a = 0n
+    let b = 1n
+    for (let i = 2; i <= n; i++) {
+        const c = a + b
+        a = b
+        b = c
+    }
+    return b
+}
+
+function start(num) {
+    console.log("Fibonacci in AssemblyScript...")
+        let startTime = performance.now()
+        fibonacci(num)
+        let time = performance.now() - startTime
+        console.log(`AssemblyScript ended in ${time} ms`)
+        as.innerText += `\n\n${num} -> ${time}`
+
+        console.log("Fibonacci in JavaScript...")
+        startTime = performance.now()
+        fibonacciJs(num)
+        time = performance.now() - startTime
+        console.log(`JavaScript ended in ${performance.now() - startTime} ms`)
+        js.innerText += `\n\n${num} -> ${time}`
+}
+
+start(1n)
+start(10n)
+start(50n)
+start(80n)
+start(1000n)
+start(10000n)
+start(100000n)
+start(1000000n)
+</script>
+</head>
+<body>
+    <div>JavaScript: <span id="js"></span></div>
+    <div>AssemblyScript: <span id="as"></span></div>
+</body>
+</html>
