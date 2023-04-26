@@ -126,15 +126,137 @@ ok
 
 Kui ei toimi, siis venduge, et `node -v` versioon on v14.20 või enam.
 
+## Funktsiooni kirjutamine
+
+Kaustas **assembly** on olemas fail `index.ts`. Seal on juba olemas `add()` näidisfunktsioon, mida kasutatakse ka testis.
+
+Lisame juurde lihtsa funktsiooni `hello()`, mis tagastab teksti:
+
+```ts
+//index.ts
+
+// The entry file of your WebAssembly module.
+
+export function add(a: i32, b: i32): i32 {
+  return a + b;
+}
+
+export function hello(): string {
+  return "Hello World!";
+}
+```
+
+Nüüd saame selle funktsiooni testida meie `test/index.js` failis:
+
+```js
+import assert from "assert";
+import { add, hello } from "../build/debug.js";
+assert.strictEqual(add(1, 2), 3);
+assert.strictEqual(hello(), "Hello World!");
+console.log(hello())
+console.log("ok");
+```
+
+Käsurea käsk `npm run asbuild && npm test` tagastab nüüd uue funktsiooni väljundi.
+
+## Katsetamine HTML-ist
+
+Kui kõik on olnud edukas, siis ülaltoodud funktsioonid on nüüd lihtsasti võimalik importida oma JavaScript ja TypeScript projektides, nii nagu testfailis on juba kasutusel.
+
+Tavalises `.js` failis peavad skriptid olema imporditud moodulitena (ehk `<script type="module">` sees).
+
+Projekti `package.json` failis on kirjeldatud mõned skriptid - üks neist on lihtne arendusserver. Selle kasutamiseks on vaja sisestada käsureasse järgnev käsk:
+
+```
+npm start
+```
+
+Selle käsuga avatakse arendusserver portil 3000 (vaikimisi) ning avatakse projekti juurikas oleva `index.html` faili, kus on ainult välja kutsutud näidisfunktsioon.
+
+Lisame ka meie `hello()` funktsiooni:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module">
+import { add, hello } from "./build/release.js";
+document.querySelector("#add").innerText = add(1, 2);
+document.querySelector("#hello").innerText = hello();
+</script>
+</head>
+<body>
+    <div id="add"></div>
+    <div id="hello"></div>
+</body>
+</html>
+```
+
+
 
 # Arendus
 
-## AssemblyScript funktsioonid JavaScriptis
+## Sisseehitatud funktsioonid
 
-## JavaScript funktsioonid AssemblyScriptis
+AssemblyScript on veebiarendajatele mugav mitte ainult tuttava süntaksi ja töövoogu tõttu, kuid ka enam-vähem tuttavate sisseehitatud funktsioonide tõttu, mis on analoogsed JavaScripti omadega.
 
-## Keerulised tüübid
+Siin on ainult näidis sellest, kui sarnased need funktsioonid on - täiuslik nimekiri funktsioonidest on saadaval [ametlikult veebilehelt](https://www.assemblyscript.org/stdlib/globals.html).
+- Math
+  - Math.random()
+  - Math.round()
+  - Math.abs()
+  - ...
+- Map
+  - delete
+  - get()
+  - has()
+  - keys()
+  - ...
+- String
+  - endsWith()
+  - includes()
+  - indexOf()
+  - ...
+- Array
+  - concat()
+  - filter()
+  - forEach()
+  - map()
+  - join()
+  - reverse()
+  - ...
 
+## Lambda funktsioonid
 
+Nii nagu JavaScript, siis AssemblyScript lubab kirjutada funktsionaalse programmeerimise stiilis funktsioone. Näiteks **arrays** asuvas kaustas on tehtud järgmine funktsioon, mis on enamjaolt analoogne oma JavaScript versioonile:
 
+```ts
+export function sum(arr: i32[]): i32 {
+  return arr.reduce<i32>((a, b) => a + b, 0)
+}
+```
 
+Suuremate arvude jaoks, mis ülevatad 32-bitise arvu limiidi, saab kasutada näiteks järgneva funktsiooni:
+
+```ts
+export function sumBigInt(arr: i64[]): i64 {
+  return arr.reduce<i64>((a, b) => a + b, 0)
+}
+```
+
+ning testis on oodatud JavaScripti BigInt tüüp:
+
+```js
+assert.strictEqual(sumBigInt([1, 5, 0, 10].map(v => BigInt(v))), BigInt(16));
+```
+
+## Pea meeles
+
+- Et näha oma koodi muudatusi, peab välja kutsuma `npm run asbuild` skripti
+- AssemblyScriptis on semikooloni kasutamine kohustuslik 
+- AssemblyScripti saab kasutada olemasolevate TypeScript tööriistadega, näiteks linterid (ehk koodi korrastajad).
+- AssemblyScript failid on `.ts`, mis võib olla veidi segane. Selle eelis on see, et vajadusel saab koodi kompileerida otse JavaScripti kasutades TypeScripti `tsc` kompilaatori. Sellest lähemalt saab lugeda [siit](https://www.assemblyscript.org/compiler.html#portability).
+- Hea tava on alati testida oma koodi. See võib olla tehtud ka väliste tööriistadega nagu mocha, jest või vitest.
+
+# Allikad
+- https://www.assemblyscript.org/
