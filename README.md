@@ -226,7 +226,7 @@ Siin on ainult näidis sellest, kui sarnased need funktsioonid on - täiuslik ni
   - reverse()
   - ...
 
-## Lambda funktsioonid
+## Töötamine massiividega, lambda funktsioonid
 
 Nii nagu JavaScript, siis AssemblyScript lubab kirjutada funktsionaalse programmeerimise stiilis funktsioone. Näiteks **arrays** asuvas kaustas on tehtud järgmine funktsioon, mis on enamjaolt analoogne oma JavaScript versioonile:
 
@@ -250,6 +250,8 @@ ning testis on oodatud JavaScripti BigInt tüüp:
 assert.strictEqual(sumBigInt([1, 5, 0, 10].map(v => BigInt(v))), BigInt(16));
 ```
 
+Muud näited asuvad **arrays** kataloogis.
+
 ## Pea meeles
 
 - Et näha oma koodi muudatusi, peab välja kutsuma `npm run asbuild` skripti
@@ -257,6 +259,7 @@ assert.strictEqual(sumBigInt([1, 5, 0, 10].map(v => BigInt(v))), BigInt(16));
 - AssemblyScripti saab kasutada olemasolevate TypeScript tööriistadega, näiteks linterid (ehk koodi korrastajad) või IntelliSense pluginad.
 - AssemblyScript failid on `.ts`, mis võib olla veidi segane. Selle eelis on see, et vajadusel saab koodi kompileerida otse JavaScripti kasutades TypeScripti `tsc` kompilaatori. Sellest lähemalt saab lugeda [siit](https://www.assemblyscript.org/compiler.html#portability).
 - Hea tava on alati testida oma koodi. See võib olla tehtud ka väliste tööriistadega nagu mocha, jest või vitest.
+- Kuigi WebAssembly on teoorias kiirem, siis nende moodulite väljakutsimine on kulukam, kui tavapärase JavaScripti funktsiooni väljakutsumine. Seega namus ajast JavaScriptist on täiesti piisav. Eranditeks on näiteks arvukad kalkulatsioonid ja keerulised algoritmid.
 
 # Allikad
 - https://www.assemblyscript.org/
