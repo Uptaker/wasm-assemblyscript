@@ -276,6 +276,7 @@ Enamjaolt on ülaltoodud massiivide funktsioonid tihtipeale kiiremad JavaScripti
 - AssemblyScriptis on semikooloni kasutamine kohustuslik 
 - AssemblyScripti saab kasutada olemasolevate TypeScript tööriistadega, näiteks linterid (ehk koodi korrastajad) või IntelliSense pluginad.
 - AssemblyScript failid on `.ts`, mis võib olla veidi segane. Selle eelis on see, et vajadusel saab koodi kompileerida otse JavaScripti kasutades TypeScripti `tsc` kompilaatori. Sellest lähemalt saab lugeda [siit](https://www.assemblyscript.org/compiler.html#portability).
+- Ei ole toetust `undefined` või `any` tüübile. Olukordades, kus on vaja kompileerimis- ja tööaegset tüübikontrolli, saab lahendada `instanceof` võtmesõnaga.
 - Hea tava on alati testida oma koodi. See võib olla tehtud ka väliste tööriistadega nagu mocha, jest või vitest.
 
 # Allikad
