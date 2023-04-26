@@ -254,7 +254,7 @@ assert.strictEqual(sumBigInt([1, 5, 0, 10].map(v => BigInt(v))), BigInt(16));
 
 - Et näha oma koodi muudatusi, peab välja kutsuma `npm run asbuild` skripti
 - AssemblyScriptis on semikooloni kasutamine kohustuslik 
-- AssemblyScripti saab kasutada olemasolevate TypeScript tööriistadega, näiteks linterid (ehk koodi korrastajad).
+- AssemblyScripti saab kasutada olemasolevate TypeScript tööriistadega, näiteks linterid (ehk koodi korrastajad) või IntelliSense pluginad.
 - AssemblyScript failid on `.ts`, mis võib olla veidi segane. Selle eelis on see, et vajadusel saab koodi kompileerida otse JavaScripti kasutades TypeScripti `tsc` kompilaatori. Sellest lähemalt saab lugeda [siit](https://www.assemblyscript.org/compiler.html#portability).
 - Hea tava on alati testida oma koodi. See võib olla tehtud ka väliste tööriistadega nagu mocha, jest või vitest.
 
