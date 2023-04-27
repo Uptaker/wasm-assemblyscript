@@ -6,77 +6,57 @@ export function add(a: i32, b: i32): i32 {
 
 export function bubblesort(origArr: i32[]): i32[] {
   let arr = origArr;
-  for(let i = 0; i < arr.length; i++) {
-      for(let j = 0; j < ( arr.length - i -1 ); j++) {
-          if(arr[j] > arr[j+1]){
+  for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < (arr.length - i -1); j++) {
+          if(arr[j] > arr[j + 1]){
               let temp = arr[j];
               arr[j] = arr[j + 1];
-              arr[j+1] = temp;
+              arr[j + 1] = temp;
           }
       }
   }
   return arr;
 }
 
-export function sieveOfEratosthenes(n: i32): i32[] {
+export function sieveOfEratosthenes(limit: i32): i32[] {
   let primes: i32[] = new Array<i32>();
 
-  let isPrime: bool[] = new Array<bool>(n + 1);
+  let isPrime: bool[] = new Array<bool>(limit + 1);
   for (let i = 0; i < isPrime.length; i++) {
     isPrime[i] = true;
   }
 
-  for (let p = 2; p * p <= n; p++) {
+  for (let p = 2; p * p <= limit; p++) {
     if (isPrime[p]) {
-      for (let i = p * p; i <= n; i += p) {
+      for (let i = p * p; i <= limit; i += p) {
         isPrime[i] = false;
       }
     }
   }
 
-  for (let p = 2; p <= n; p++) {
-    if (isPrime[p]) {
-      primes.push(p);
-    }
+  for (let p = 2; p <= limit; p++) {
+    if (isPrime[p]) primes.push(p);
   }
 
   return primes;
 }
 
-export function monteCarloPi(iterations: i32): f64 {
+export function monteCarloPi(times: i32): f64 {
   let inside: i32 = 0;
-  for (let i: i32 = 0; i < iterations; i++) {
+  for (let i: i32 = 0; i < times; i++) {
     const x: f64 = Math.random();
     const y: f64 = Math.random();
-    if (x * x + y * y <= 1) {
-      inside++;
-    }
+    if (x * x + y * y <= 1) inside++;
   }
-  return 4 * inside / iterations;
+  return 4 * inside / times;
 }
 
 export function djb2Hash(str: string): u32 {
   let hash: u32 = 5381;
-  for (let i: i32 = 0; i < str.length; i++) {
-    const charCode: u32 = <u32>str.charCodeAt(i);
-    hash = ((hash << 5) + hash) + charCode;
-  }
+  for (let i: i32 = 0; i < str.length; i++) hash = ((hash << 5) + hash) + <u32>str.charCodeAt(i);
   return hash;
 }
 
-export function fnv1a(str: string): u64 {
-  const offset = 0xcbf29ce484222325;
-  const prime = 0x100000001b3;
-
-  let hash = offset;
-
-  for (let i = 0; i < str.length; i++) {
-    hash ^= str.charCodeAt(i);
-    hash *= prime;
-  }
-
-  return hash as u64;
-}
 
 // Ackermann algorithm implementations. Scrapped due to stack range errors/crashes
 
