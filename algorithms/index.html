@@ -20,12 +20,12 @@ function jsBubbleSort(origArr) {
 
 function sieveOfEratosthenesJs(limit) {
     let primes = []
-    let isPrime = new Array(limit + 1).fill(true);
+    let isPrime = new Array(limit + 1).fill(true)
     for (let p = 2; p * p <= limit; p++) {
         if (isPrime[p]) {
-        for (let i = p * p; i <= limit; i += p) {
-            isPrime[i] = false
-        }
+            for (let i = p * p; i <= limit; i += p) {
+                isPrime[i] = false
+            }
         }
     }
 
@@ -33,7 +33,7 @@ function sieveOfEratosthenesJs(limit) {
         if (isPrime[p]) primes.push(p)
     }
 
-    return primes;
+    return primes
 }
 
 function monteCarloPiJs(times) {
