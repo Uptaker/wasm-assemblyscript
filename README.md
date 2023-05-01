@@ -21,18 +21,18 @@ AssemblyScript kasutab WebAssembly sissehitatud tüüpe ning on rangem kui TypeS
 
 ```js
 function random(min, max) {
-  const ranges = max - min + 1;
-  const num = Math.floor(Math.random() * ranges) + min;
-  return num;
+  const ranges = max - min + 1
+  const num = Math.floor(Math.random() * ranges) + min
+  return num
 }
 ```
 
 ### TypeScript
 ```ts
 export function random(min: number, max: number) {
-  const ranges = max - min + 1;
-  const num = Math.floor(Math.random() * ranges) + min;
-  return num;
+  const ranges = max - min + 1
+  const num = Math.floor(Math.random() * ranges) + min
+  return num
 }
 ```
 
@@ -180,9 +180,9 @@ Lisame ka meie `hello()` funktsiooni:
 <html lang="en">
 <head>
 <script type="module">
-import { add, hello } from "./build/release.js";
-document.querySelector("#add").innerText = add(1, 2);
-document.querySelector("#hello").innerText = hello();
+import { add, hello } from "./build/release.js"
+document.querySelector("#add").innerText = add(1, 2)
+document.querySelector("#hello").innerText = hello()
 </script>
 </head>
 <body>
